@@ -412,6 +412,26 @@ input, textarea {
     border-color: var(--color-white);
 }
 
+.btn-outline {
+    background: transparent;
+    color: var(--color-white);
+    border: 1px solid var(--color-gray-500);
+}
+
+.btn-outline:hover {
+    background: var(--color-gray-800);
+    border-color: var(--color-white);
+    transform: translateY(-2px);
+}
+
+.btn-outline svg {
+    transition: var(--transition-normal);
+}
+
+.btn-outline:hover svg {
+    transform: translateY(2px);
+}
+
 /* Hero Stats */
 .hero-stats {
     display: flex;
@@ -664,6 +684,47 @@ section {
 }
 
 /* ===== EXPERIENCE SECTION ===== */
+.experience {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorative element on the right */
+.experience::after {
+    content: '';
+    position: absolute;
+    right: -250px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    border: 1px solid var(--color-gray-800);
+    border-radius: 50%;
+    pointer-events: none;
+    /* opacity: 0.5; */
+}
+
+.experience::before {
+    content: '';
+    position: absolute;
+    right: -150px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 400px;
+    height: 400px;
+    border: 1px solid var(--color-gray-800);
+    border-radius: 50%;
+    pointer-events: none;
+    /* opacity: 0.3; */
+}
+
+@media (max-width: 1024px) {
+    .experience::after,
+    .experience::before {
+        display: none;
+    }
+}
+
 .timeline {
     position: relative;
     padding-left: 40px;
@@ -978,13 +1039,16 @@ section {
 }
 
 .slide-content {
+    display: block;
     background: var(--color-black);
     border: 1px solid var(--color-gray-800);
     transition: var(--transition-normal);
+    cursor: pointer;
 }
 
 .slide-content:hover {
     border-color: var(--color-gray-600);
+    transform: translateY(-5px);
 }
 
 .slide-image {
@@ -1071,17 +1135,30 @@ section {
     border-radius: 4px;
 }
 
+.portfolio-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
 /* ===== CONTACT SECTION ===== */
 .contact-content {
     display: grid;
     grid-template-columns: 1fr;
     gap: 60px;
+    align-items: start;
 }
 
 @media (min-width: 1024px) {
     .contact-content {
         grid-template-columns: 1fr 1fr;
+        gap: 80px;
     }
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-description {
@@ -1091,7 +1168,9 @@ section {
 }
 
 .contact-details {
-    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-item {
